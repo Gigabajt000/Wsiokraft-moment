@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
@@ -65,5 +66,10 @@ func interact():
 	current_coliding = player_range.get_collider()
 	if player_range.is_colliding():
 		if current_coliding.is_in_group("door"):
+			$"CanvasLayer/Control/interact crosshair".visible = true
 			if Input.is_action_just_pressed("interaction"):
 				current_coliding.interact = true
+		else:
+			$"CanvasLayer/Control/interact crosshair".visible = false
+	else:
+		$"CanvasLayer/Control/interact crosshair".visible = false

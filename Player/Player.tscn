@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b65o63u6oudvq"]
+[gd_scene load_steps=7 format=3 uid="uid://b65o63u6oudvq"]
 
 [ext_resource type="Script" uid="uid://cfwg3xtnnguw4" path="res://Player/player.gd" id="1_3qydi"]
+[ext_resource type="Texture2D" uid="uid://c7rubgkvnq8ga" path="res://Assets/crosshair/crosshair001.png" id="2_tok1r"]
+[ext_resource type="Texture2D" uid="uid://0mks181l0a7j" path="res://Assets/crosshair/crosshair087.png" id="3_ddoul"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3lat"]
 
@@ -18,12 +20,10 @@ shape = SubResource("CapsuleShape3D_q3lat")
 
 [node name="crouching_collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.833567, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_3qydi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00726, 0)
-visible = false
 mesh = SubResource("CapsuleMesh_tok1r")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
@@ -31,9 +31,49 @@ transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0.9
 
 [node name="head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-visible = false
 
 [node name="Camera3D" type="Camera3D" parent="head"]
 
 [node name="player range" type="RayCast3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, -7.43094e-08, -1, 0, 1.7, -4.37114e-08, 0, 0, -0.282795)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="crosshair" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tok1r")
+
+[node name="interact crosshair" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ddoul")
