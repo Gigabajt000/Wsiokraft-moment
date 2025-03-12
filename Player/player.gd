@@ -12,6 +12,9 @@ const mouse_sens = 0.2
 
 const crouch_depth = -0.5
 
+func _process(delta: float) -> void:
+	interact()
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -30,13 +33,13 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_pressed("crouch"):
 		current_speed = crouch_speed
-		head.position.y = 1.8 + crouch_depth
+		head.position.y = move_toward(head.position.y, 1.8 + crouch_depth, delta * 3)
 		$normal_collision.disabled = true
 		$crouching_collision.disabled = false
 	elif !$RayCast3D.is_colliding():
 		$normal_collision.disabled = false
 		$crouching_collision.disabled = true
-		head.position.y = 1.8
+		head.position.y = move_toward(head.position.y, 1.8, delta * 3)
 		if Input.is_action_pressed("sprint"):
 			current_speed = sprint_speed
 		else:
@@ -52,3 +55,15 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 
 	move_and_slide()
+
+
+# Interakcje (iteracje mentioned?)
+@onready var player_range: RayCast3D = $"head/player range"
+@onready var current_coliding
+
+func interact():
+	current_coliding = player_range.get_collider()
+	if player_range.is_colliding():
+		if current_coliding.is_in_group("door"):
+			if Input.is_action_just_pressed("interaction"):
+				current_coliding.interact = true
