@@ -32,7 +32,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Pause_Menu" parent="Player/CanvasLayer" index="1" node_paths=PackedStringArray("settings", "main_menu") instance=ExtResource("2_eunhr")]
-process_mode = 3
 visible = false
 settings = NodePath("../Settings")
 main_menu = NodePath("../Main_Menu")
