@@ -8,12 +8,16 @@ extends CharacterBody3D
 @export var jump_force = 4.5
 var current_speed = 5.0
 
+var hand_ocupied: bool = false
+var last_picked_up
+
 const mouse_sens = 0.2
 
 const crouch_depth = -0.5
 
 func _process(delta: float) -> void:
 	interact()
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -71,11 +75,14 @@ func interact():
 				current_coliding.interact = true
 		elif current_coliding.is_in_group("pick_up"):
 			$"CanvasLayer/Control/interact crosshair".visible = true
-			if Input.is_action_just_pressed("interaction") and current_coliding.interact == false:
+			if Input.is_action_just_pressed("interaction"):
+				last_picked_up = current_coliding
 				current_coliding.interact = true
-			if Input.is_action_just_pressed("interaction") and current_coliding.interact == true:
-				current_coliding.interact = false
+				hand_ocupied = true
 		else:
 			$"CanvasLayer/Control/interact crosshair".visible = false
+	elif hand_ocupied == true and Input.is_action_just_pressed("interaction"):
+		last_picked_up.interact = false
+		hand_ocupied= false
 	else:
 		$"CanvasLayer/Control/interact crosshair".visible = false

@@ -28,6 +28,7 @@ folder_colors={
 door=""
 pick_up=""
 player=""
+main=""
 
 [input]
 

@@ -16,7 +16,7 @@ background_mode = 2
 sky = SubResource("Sky_yh5la")
 tonemap_mode = 2
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" groups=["main"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2w1kt")
@@ -47,7 +47,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 2.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.5, -4)
 
 [node name="Coin" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("3_qvhan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.2, -0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, -2.3)
 hand = NodePath("../Player/head/hand")
-
-[editable path="Player"]
