@@ -19,7 +19,7 @@ background_mode = 2
 sky = SubResource("Sky_yh5la")
 tonemap_mode = 2
 
-[node name="Main" type="Node3D" groups=["main"]]
+[node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2w1kt")
@@ -32,7 +32,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Pause_Menu" parent="Player/CanvasLayer" index="1" node_paths=PackedStringArray("settings", "main_menu") instance=ExtResource("2_eunhr")]
-process_mode = 3
 visible = false
 settings = NodePath("../Settings")
 main_menu = NodePath("../Main_Menu")
@@ -64,5 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 2.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.5, -4)
 
 [node name="Coin" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("3_qvhan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, -2.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.2, -0.7)
 hand = NodePath("../Player/head/hand")
+
+[editable path="Player"]
