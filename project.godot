@@ -26,6 +26,8 @@ folder_colors={
 [global_group]
 
 door=""
+pick_up=""
+player=""
 
 [input]
 

@@ -69,6 +69,12 @@ func interact():
 			$"CanvasLayer/Control/interact crosshair".visible = true
 			if Input.is_action_just_pressed("interaction"):
 				current_coliding.interact = true
+		elif current_coliding.is_in_group("pick_up"):
+			$"CanvasLayer/Control/interact crosshair".visible = true
+			if Input.is_action_just_pressed("interaction") and current_coliding.interact == false:
+				current_coliding.interact = true
+			if Input.is_action_just_pressed("interaction") and current_coliding.interact == true:
+				current_coliding.interact = false
 		else:
 			$"CanvasLayer/Control/interact crosshair".visible = false
 	else:

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs3rnkj4rpts7"]
+
+[ext_resource type="PackedScene" uid="uid://de5702xmk64nq" path="res://Assets/gltf/coin.gltf" id="1_2ekjv"]
+[ext_resource type="Script" uid="uid://b75wl3cw4o0sv" path="res://Main/coin.gd" id="1_rekip"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2ekjv"]
+height = 0.124023
+radius = 0.175781
+
+[node name="Coin" type="RigidBody3D" groups=["pick_up"]]
+script = ExtResource("1_rekip")
+
+[node name="coin" parent="." instance=ExtResource("1_2ekjv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_2ekjv")

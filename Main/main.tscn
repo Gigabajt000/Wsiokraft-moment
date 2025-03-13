@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwge685thqbq0"]
+[gd_scene load_steps=7 format=3 uid="uid://cwge685thqbq0"]
 
 [ext_resource type="PackedScene" uid="uid://b65o63u6oudvq" path="res://Player/Player.tscn" id="1_yh5la"]
 [ext_resource type="PackedScene" uid="uid://fb2d1v8t5hgs" path="res://Main/door.tscn" id="2_2w1kt"]
+[ext_resource type="PackedScene" uid="uid://cs3rnkj4rpts7" path="res://Main/coin.tscn" id="3_qvhan"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_50cra"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -25,7 +26,7 @@ transform = Transform3D(-0.766044, 0.55667, -0.321394, 2.78059e-08, 0.5, 0.86602
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_yh5la")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
@@ -44,3 +45,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 2.1)
 
 [node name="Door" parent="." instance=ExtResource("2_2w1kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.5, -4)
+
+[node name="Coin" parent="." node_paths=PackedStringArray("hand") instance=ExtResource("3_qvhan")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.2, -0.7)
+hand = NodePath("../Player/head/hand")
+
+[editable path="Player"]
